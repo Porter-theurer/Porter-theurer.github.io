@@ -1,5 +1,23 @@
-html {
-  
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+html, body {
+  margin: 0;
+}
+head {
+  background-color: light-gray;
+}
+body {
+  font-family: 'Righteous', cursive;
+}
 h1 {
 
+}
+header {
+  /* height: 100px; */
+  padding: 20px;
+  color: white;
+  width: 100%;
+  background: url("images/16.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
