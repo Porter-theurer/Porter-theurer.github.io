@@ -22,3 +22,6 @@ header {
   background-position: center;
   background-repeat: no-repeat;
 }
+.somePadding {
+  padding: 30px;
+}
