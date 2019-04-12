@@ -1,7 +1,7 @@
 function makeCalculator(){
   var c_type = prompt('What calculator would you like to make?')
   if (c_type === "SPLIT") {
-    window.location.href = "https://google.com/";
+    window.location.href = "calculator";
   } else {
     alert('invalid response')
   }
