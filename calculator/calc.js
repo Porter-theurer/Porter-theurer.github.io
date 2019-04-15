@@ -18,6 +18,7 @@ var calc = {
 }
 //HTML Objects
 var elements = {
+    main: document.getElementById("main"),
     submit: document.getElementById("submit"),
     output: document.getElementById("output"),
     edit: document.getElementById("edit"),
@@ -40,12 +41,28 @@ elements.submit.addEventListener("click", function(){
         var amount = splitWay.percent/100 * calc.money;
 
         outputHTML+="<br>";
-        outputHTML+= name + ": " + Math.floor(amount*100)/100;
+        outputHTML+= name + ": $" + Math.floor(amount*100)/100;
     }
 
     elements.output.innerHTML = outputHTML;
 });
 function createInputArea(){
-    
-}
+    main.style.display = "none";
+    elements.output.innerHTML = "";
+    var outputHTML = "";
+    for (var i = 0; i < calc.splits.length; i++) {
+        var split = calc.splits[i];
+        outputHTML += +"Name: "+split.name + ", percent: "+split.percent+'. <button class="remove">Remove</button>'
+
+        outputHTML += "<br>"
+    }
+    outputHTML += '<button id="done">Done</button>';
+    elements.editOutput.innerHTML = outputHTML;
+
+    elements.done = document.getElementById("done");
+    elements.done.addEventListener("click", function(){
+        elements.editOutput.innerHTML = "";
+        elements.main.style.display = "block";
+    });
+};
 elements.edit.addEventListener("click", createInputArea)

@@ -1,2 +1,2 @@
-# website
-This is a website made by Porter and Nathaniel. Visit it [here](https://Porter-theurer.github.io)!
+# Calculator
+This is a website made by Porter and Nathaniel. Visit it [here](https://calculator.theurer.tk)!
