@@ -18,8 +18,10 @@ var calc = {
 }
 
 //Set localStorage
-for(var i = 0; i < localStorage.length; i ++){
-    calc.splits[i] = localStorage[i];
+for(var i = 0; i < localStorage.length/2; i ++){
+    calc.splits[i] = {};
+    calc.splits[i].name = localStorage[i+"name"];
+    calc.splits[i].percent = parseInt(localStorage[i+"value"],10);
 }
 
 //HTML Objects
@@ -49,6 +51,7 @@ function updateSpending(){
     calc.splits[0].percent = 100 - totalPercent;
 };
 updateSpending();
+
 //Creates the edit area for changing the calculator
 function createInputArea(){
 
@@ -105,7 +108,7 @@ function createInputArea(){
             elements.saveEdit.index = this.index;
             elements.saveEdit.addEventListener("click", function(){
                 calc.splits[this.index].name = document.getElementById("newName").value
-                calc.splits[this.index].percent = parseInt(document.getElementById("newPercent").value,10);
+                calc.splits[this.index].percent = parseInt(document.getElementById("newPercent").value,10) || 0;
                 createInputArea();
             });
             document.getElementById("cancel").addEventListener("click", function(){
@@ -129,7 +132,7 @@ function createInputArea(){
         elements.addSplit.addEventListener("click", function(){
             calc.splits.push({
                 name: document.getElementById("newName").value,
-                percent: parseInt(document.getElementById("newPercent").value,10),
+                percent: parseInt(document.getElementById("newPercent").value,10) || 0,
             })
             createInputArea();
         });
@@ -161,9 +164,9 @@ elements.saveLocal.addEventListener("click", function(){
     localStorage.clear();
     for(var i = 0; i < calc.splits.length; i ++){
         localStorage[i+"name"] = calc.splits[i].name;
-        localStorage[i+"value"] = calc.splits[i].percent
+        localStorage[i+"value"] = calc.splits[i].percent;
     }
 })
 elements.removeLocal.addEventListener("click", function(){
-    localStorage.calc = undefined;
+    localStorage.clear();
 })
