@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Righteous');
 html, body {
   margin: 0;
-}
-head {
-
+  width: 100%;
+  height: 100;
 }
 body {
   font-family: 'Righteous', cursive;
   background-image: linear-gradient(to right, #41f48b , #a9f441);
 }
 h1 {
-text-align: center;
+  text-align: center;
 }
 header {
   /* height: 100px; */
@@ -18,14 +17,16 @@ header {
   color: #41f48b;
   width: 100%;
   background-color: white;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 .somePadding {
   padding: 30px;
+  margin: auto;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
 }
 button {
+  margin: 10px;
   font-family: 'Righteous', cursive;
   background-color: white;
   padding: 10px;
