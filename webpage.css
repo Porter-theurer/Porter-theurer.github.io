@@ -7,17 +7,17 @@ head {
 }
 body {
   font-family: 'Righteous', cursive;
-  background-image: linear-gradient(to left, blue , yellow);
+  background-image: linear-gradient(to right, #41f48b , #a9f441);
 }
 h1 {
-
+text-align: center;
 }
 header {
   /* height: 100px; */
-  padding: 20px;
-  color: white;
+  padding: 10px;
+  color: #41f48b;
   width: 100%;
-  background: url("images/16.jpg");
+  background-color: white;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -26,5 +26,10 @@ header {
   padding: 30px;
 }
 button {
-  background-color: #CCCC00;
+  font-family: 'Righteous', cursive;
+  background-color: white;
+  padding: 10px;
+  border: none;
+  color: #41f48b;
+  border-radius: 7px;
 }
