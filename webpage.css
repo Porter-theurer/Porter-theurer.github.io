@@ -7,7 +7,7 @@ head {
 }
 body {
   font-family: 'Righteous', cursive;
-  background-color: #EAEDED;
+  background: url("images/background.jpg");
 }
 h1 {
 
