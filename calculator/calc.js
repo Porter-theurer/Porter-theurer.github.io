@@ -167,6 +167,3 @@ elements.saveLocal.addEventListener("click", function(){
         localStorage[i+"value"] = calc.splits[i].percent;
     }
 })
-elements.removeLocal.addEventListener("click", function(){
-    localStorage.clear();
-})
