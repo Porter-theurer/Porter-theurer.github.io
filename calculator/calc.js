@@ -71,7 +71,7 @@ function createInputArea(){
     for (var i = 0; i < calc.splits.length; i++) {
         var split = calc.splits[i];
 
-        outputHTML += 'Name: "' + split.name + '", Percent: ' + split.percent + '.' + (split.name==="spending"?"":' <button class="remove">Remove</button> <button class="edit">Edit</button>') + "<br>";
+        outputHTML += 'Name: "' + split.name + '", Percent: ' + split.percent + '.' + (i===0?"":' <button class="remove">Remove</button> <button class="edit">Edit</button>') + "<br>";
     }
 
     // Add new button
@@ -90,9 +90,9 @@ function createInputArea(){
     //Remove Buttons
     elements.removeBtns = document.getElementsByClassName("remove")
     for(var i = 0; i < elements.removeBtns.length; i ++){
-        elements.removeBtns[i].index = i;
+        elements.removeBtns[i].index = i+1;
         elements.removeBtns[i].addEventListener("click",function(){
-            calc.splits.splice(this.index+1,1);
+            calc.splits.splice(this.index,1);
             createInputArea();
         })
     }
