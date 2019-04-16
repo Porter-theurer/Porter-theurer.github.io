@@ -3,15 +3,15 @@ var calc = {
     money: 0,
     splits: [
         {
-            name: "spending",
+            name: "Spending",
             percent: 0
         },
         {
-            name: "savings",
+            name: "Savings",
             percent: 40,
         },
         {
-            name: "charity",
+            name: "Charity",
             percent: 10,
         },
     ],
@@ -46,9 +46,15 @@ var modifiers = {
 function updateSpending(){
     var totalPercent = 0;
     for(var i = 1; i < calc.splits.length; i ++){
-        totalPercent+=calc.splits[i].percent;
+        totalPercent+=parseInt(calc.splits[i].percent,10);
     }
-    calc.splits[0].percent = 100 - totalPercent;
+    var newValue = 100 - totalPercent;
+    calc.splits[0].percent = newValue;
+    if(newValue < 0){
+        calc.splits[0].name = "Debt";
+    } else if(calc.splits[0].name!=="Spending"){
+        calc.splits[0].name = "Spending";
+    }
 };
 updateSpending();
 
