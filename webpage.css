@@ -7,7 +7,7 @@ head {
 }
 body {
   font-family: 'Righteous', cursive;
-  background: url("images/background.jfif");
+  background-image: linear-gradient(to left, blue , yellow);
 }
 h1 {
 
