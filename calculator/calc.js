@@ -16,6 +16,12 @@ var calc = {
         },
     ],
 }
+
+//Set localStorage
+for(var i = 0; i < localStorage.length; i ++){
+    calc.splits[i] = localStorage[i];
+}
+
 //HTML Objects
 var elements = {
     main: document.getElementById("main"),
@@ -23,29 +29,18 @@ var elements = {
     output: document.getElementById("output"),
     edit: document.getElementById("edit"),
     editOutput: document.getElementById("editCalcOutput"),
+    saveLocal: document.getElementById("saveToLocal"),
+    removeLocal: document.getElementById("removeLocal"),
 }
+
 //Modifying functions
 var modifiers = {
     upFirstLetter: function(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 }
-//Event listeners
-elements.submit.addEventListener("click", function(){
-    calc.money = document.getElementById("amount").value;
-    var outputHTML = 'Here are your results';
 
-    for(var i = 0; i < calc.splits.length; i ++){
-        var splitWay = calc.splits[i];
-        var name = modifiers.upFirstLetter(splitWay.name)
-        var amount = splitWay.percent/100 * calc.money;
-
-        outputHTML+="<br>";
-        outputHTML+= name + ": $" + Math.floor(amount*100)/100;
-    }
-
-    elements.output.innerHTML = outputHTML;
-});
+//Updates spending amount in relation to others
 function updateSpending(){
     var totalPercent = 0;
     for(var i = 1; i < calc.splits.length; i ++){
@@ -54,6 +49,7 @@ function updateSpending(){
     calc.splits[0].percent = 100 - totalPercent;
 };
 updateSpending();
+//Creates the edit area for changing the calculator
 function createInputArea(){
 
     //Hide original and reset
@@ -143,4 +139,31 @@ function createInputArea(){
 
     })
 };
+
+//Event listeners
+elements.submit.addEventListener("click", function(){
+    calc.money = document.getElementById("amount").value;
+    var outputHTML = 'Here are your results';
+
+    for(var i = 0; i < calc.splits.length; i ++){
+        var splitWay = calc.splits[i];
+        var name = modifiers.upFirstLetter(splitWay.name)
+        var amount = splitWay.percent/100 * calc.money;
+
+        outputHTML+="<br>";
+        outputHTML+= name + ": $" + Math.floor(amount*100)/100;
+    }
+
+    elements.output.innerHTML = outputHTML;
+});
 elements.edit.addEventListener("click", createInputArea)
+elements.saveLocal.addEventListener("click", function(){
+    localStorage.clear();
+    for(var i = 0; i < calc.splits.length; i ++){
+        localStorage[i+"name"] = calc.splits[i].name;
+        localStorage[i+"value"] = calc.splits[i].percent
+    }
+})
+elements.removeLocal.addEventListener("click", function(){
+    localStorage.calc = undefined;
+})
