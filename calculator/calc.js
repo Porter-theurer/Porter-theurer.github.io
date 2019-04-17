@@ -8,7 +8,7 @@ var calc = {
         },
         {
             name: "Savings",
-            percent: 40,
+            percent: 50,
         },
         {
             name: "Charity",
