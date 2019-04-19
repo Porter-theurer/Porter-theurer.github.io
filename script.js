@@ -3,7 +3,7 @@ function makeCalculator(){
   if (c_type === "SPLIT") {
     window.location.href = "calculator";
   } else if ("LENGTH MON") {
-    window.location.href = "neededMon";
+    window.location.href = "lengthMon";
   } else {
     alert('invalid response')
   }
