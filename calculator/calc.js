@@ -1,3 +1,5 @@
+var stage = "show"
+
 //Calculator Variables
 var calc = {
     money: 0,
@@ -66,6 +68,7 @@ function createInputArea(){
     main.style.display = "none";
     elements.output.innerHTML = "";
     var outputHTML = "";
+    stage = "edit"
 
     //Add current values
     for (var i = 0; i < calc.splits.length; i++) {
@@ -85,6 +88,7 @@ function createInputArea(){
     elements.done.addEventListener("click", function(){
         elements.editOutput.innerHTML = "";
         elements.main.style.display = "block";
+        stage = "show"
     });
 
     //Remove Buttons
@@ -149,21 +153,29 @@ function createInputArea(){
     })
 };
 
+//Outputs answers
+function returnAnswer(force){
+
+    calc.money = parseInt(document.getElementById("amount").value,10) || 0;
+    if(((calc.money||elements.output.innerHTML)&&stage=="show")||force){
+        outputHTML = 'Here are your results';
+
+        for(var i = 0; i < calc.splits.length; i ++){
+            var splitWay = calc.splits[i];
+            var name = modifiers.upFirstLetter(splitWay.name)
+            var amount = splitWay.percent/100 * calc.money;
+
+            outputHTML+="<br>";
+            outputHTML+= name + ": $" + Math.floor(amount*100)/100;
+        }
+
+    }
+    elements.output.innerHTML = outputHTML;
+}
+
 //Event listeners
 elements.submit.addEventListener("click", function(){
-    calc.money = document.getElementById("amount").value;
-    var outputHTML = 'Here are your results';
-
-    for(var i = 0; i < calc.splits.length; i ++){
-        var splitWay = calc.splits[i];
-        var name = modifiers.upFirstLetter(splitWay.name)
-        var amount = splitWay.percent/100 * calc.money;
-
-        outputHTML+="<br>";
-        outputHTML+= name + ": $" + Math.floor(amount*100)/100;
-    }
-
-    elements.output.innerHTML = outputHTML;
+    returnAnswer(true)
 });
 elements.edit.addEventListener("click", createInputArea)
 elements.saveLocal.addEventListener("click", function(){
@@ -173,3 +185,6 @@ elements.saveLocal.addEventListener("click", function(){
         localStorage[i+"value"] = calc.splits[i].percent;
     }
 })
+
+//Gets answer every .5 seconds anyways
+setInterval(returnAnswer, /* MS it takes to update */500)

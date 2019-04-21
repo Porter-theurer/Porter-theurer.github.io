@@ -32,4 +32,21 @@ button {
   border: none;
   color: #41f48b;
   border-radius: 10px;
+  outline: none;
+  transition: background 1s;
+  cursor: pointer;
+}
+button:hover {
+    background-color: rgb(230,255,240);
+    transition: background 1s;
+}
+input[type="text"], input[type="number"] {
+    padding: 10px;
+    width: 10rem;
+    border: 1px groove lightgray;
+    border-radius: 0.75rem;
+    outline: none;
+}
+.required {
+    color: rgb(255,50,50);
 }

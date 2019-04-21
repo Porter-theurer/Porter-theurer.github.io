@@ -7,15 +7,25 @@
   </head>
   <body>
     <div class="somePadding">
-      <input type = "text" placeholder="Cost of wanted item">
-      <br><br>
-      <input type = "text" placeholder="Percentage of spending">
-      <br><br>
-      <input type = "text" placeholder="Money you make per hour">
+      $<input id="cost" type="number" placeholder="Cost of wanted item"><sup class="required">*</sup>
       <br>
-      <input type = 'text' placeholder="Regular work hours per day">
-
-      <button>Submit</button>
+      %<input id="spending" type="number" placeholder="Percentage of spending"><sup class="required">*</sup>
+      <br>
+      $<input id="hour" type="number" placeholder="Money you make per hour">
+      <br>
+      ~<input id="avgHours" type="number" placeholder="Regular work hours per day">
+      <br>
+      <div id="output"></div>
+      <br>
+      <button id="submit">Submit</button>
+      <button id="save">Save</button>
+      <br>
+      <a href=".."><button>Home</button></a>
     </div>
+
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <!-- Calc JS -->
+    <script src="calc.js" charset="utf-8"></script>
   </body>
 </html>
