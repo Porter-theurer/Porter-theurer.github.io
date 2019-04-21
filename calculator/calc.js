@@ -1,4 +1,4 @@
-var stage = "show"
+var stage = "show";
 
 //Calculator Variables
 var calc = {

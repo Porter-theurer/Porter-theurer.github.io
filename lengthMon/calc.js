@@ -6,7 +6,7 @@ var ins = {
 }
 for(var i in ins){
     if(localStorage[i]){
-        ins[i].val(localStorage[i]);
+        ins[i].val(parseFloat(localStorage[i]));
     }
 }
 
@@ -38,6 +38,11 @@ $("#submit").click(function(){
     }
 
     $("#output").html(outputHTML);
+
+    for(var i in ins) {
+        localStorage[i] = ins[i].val();
+    }
+
 })
 $("#reset").click(function(){
     $("#output").html("");
