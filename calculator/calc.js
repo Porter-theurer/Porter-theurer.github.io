@@ -29,7 +29,7 @@ for(var i = 0; i < localStorage.length/2; i ++){
 //HTML Objects
 var elements = {
     main: document.getElementById("main"),
-    submit: document.getElementById("submit"),
+    amount: document.getElementById("amount"),
     output: document.getElementById("output"),
     edit: document.getElementById("edit"),
     editOutput: document.getElementById("editCalcOutput"),
@@ -88,7 +88,8 @@ function createInputArea(){
     elements.done.addEventListener("click", function(){
         elements.editOutput.innerHTML = "";
         elements.main.style.display = "block";
-        stage = "show"
+        stage = "show";
+        returnAnswer();
     });
 
     //Remove Buttons
@@ -156,7 +157,7 @@ function createInputArea(){
 //Outputs answers
 function returnAnswer(force){
 
-    calc.money = parseInt(document.getElementById("amount").value,10) || 0;
+    calc.money = parseFloat(document.getElementById("amount").value,10) || 0;
     if(((calc.money||elements.output.innerHTML)&&stage=="show")||force){
         outputHTML = 'Here are your results';
 
@@ -172,11 +173,9 @@ function returnAnswer(force){
     }
     elements.output.innerHTML = outputHTML;
 }
+returnAnswer(true);
 
 //Event listeners
-elements.submit.addEventListener("click", function(){
-    returnAnswer(true)
-});
 elements.edit.addEventListener("click", createInputArea)
 elements.saveLocal.addEventListener("click", function(){
     localStorage.clear();
@@ -185,6 +184,4 @@ elements.saveLocal.addEventListener("click", function(){
         localStorage[i+"value"] = calc.splits[i].percent;
     }
 })
-
-//Gets answer every .5 seconds anyways
-setInterval(returnAnswer, /* MS it takes to update */500)
+elements.amount.addEventListener("keyup", returnAnswer);

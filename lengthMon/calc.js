@@ -2,7 +2,7 @@ var ins = {
     cost: $("#cost"),
     spending: $("#spending"),
     hour: $("#hour"),
-    avgHours: $("avgHours"),
+    avgHours: $("#avgHours"),
 }
 for(var i in ins){
     if(localStorage[i]){
@@ -29,9 +29,19 @@ $("#submit").click(function(){
         outputHTML += "You need to earn $" + amountNeeded + " to have enough spending money to buy something worth $" + cV;
         if(hV){
             var neededHours = Math.ceil(amountNeeded/hV);
-            outputHTML += "This will take you " + neededHours + " hours to earn at $" + hV + " per hour";
+            outputHTML += "<br>This will take you " + neededHours + " hours to earn at $" + hV + " per hour";
+            if(aHV){
+                var neededDays = Math.ceil(neededHours/aHV)
+                outputHTML += ", which will take you about "+neededDays+" day(s)."
+            }
         }
     }
 
-    $("#output").text(outputHTML);
+    $("#output").html(outputHTML);
+})
+$("#reset").click(function(){
+    $("#output").html("");
+    for(var i in ins){
+        ins[i].val(undefined);
+    }
 })
