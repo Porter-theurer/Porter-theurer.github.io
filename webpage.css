@@ -49,10 +49,10 @@ input {
 .required {
     color: rgb(255,50,50);
 }
-#output, input, button {
+/* #output, input, button {
     border-radius: 0.75rem;
     border: 1px groove lightgray;
-}
+} */
 #output {
     margin: 4px;
     padding: 10px;
